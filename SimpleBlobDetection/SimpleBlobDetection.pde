@@ -1,5 +1,6 @@
 /*
 This is a simple demo script intended to allow users to quickly write blob detection
+Based off coding train example
 */
 
 /*
@@ -21,7 +22,7 @@ void setup() {
   printArray(cameras);
   video = new Capture(this, 640, 360);
   video.start();
-  trackColor = color(255, 0, 0);
+  trackColor = color(150, 100, 150);
 }
 
 void captureEvent(Capture video) {
