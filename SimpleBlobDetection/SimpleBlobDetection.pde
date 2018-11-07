@@ -1,12 +1,14 @@
-// Daniel Shiffman
-// http://codingtra.in
-// http://patreon.com/codingtrain
-// Code for: https://youtu.be/1scFcY-xMrI
+/*
+This is a simple demo script intended to allow users to quickly write blob detection
+*/
 
+/*
+Import Processing Video Library and start a capture
+*/
 import processing.video.*;
-
 Capture video;
 
+//Parameters 
 color trackColor; 
 float threshold = 25;
 float distThreshold = 50;
@@ -27,14 +29,14 @@ void captureEvent(Capture video) {
 }
 
 void keyPressed() {
-  if (key == 'a') {
+  if (keyCode == UP) {
     distThreshold+=5;
-  } else if (key == 'z') {
+  } else if (keyCode == DOWN) {
     distThreshold-=5;
   }
-  if (key == 's') {
+  if (keyCode == RIGHT) {
     threshold+=5;
-  } else if (key == 'x') {
+  } else if (keyCode == LEFT) {
     threshold-=5;
   }
 
@@ -93,23 +95,4 @@ void draw() {
   fill(0);
   text("distance threshold: " + distThreshold, width-10, 25);
   text("color threshold: " + threshold, width-10, 50);
-}
-
-
-// Custom distance functions w/ no square root for optimization
-float distSq(float x1, float y1, float x2, float y2) {
-  float d = (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1);
-  return d;
-}
-
-
-float distSq(float x1, float y1, float z1, float x2, float y2, float z2) {
-  float d = (x2-x1)*(x2-x1) + (y2-y1)*(y2-y1) +(z2-z1)*(z2-z1);
-  return d;
-}
-
-void mousePressed() {
-  // Save color where the mouse is clicked in trackColor variable
-  int loc = mouseX + mouseY*video.width;
-  trackColor = video.pixels[loc];
 }
