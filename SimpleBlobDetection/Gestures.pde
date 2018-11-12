@@ -1,10 +1,8 @@
 //Some categorized gestures 
+int timer = 2000; //number of milliseconds for gesture logic
 
-//Click Gesture 
-class Click{}
 
-//Hold Gesture
-class Hold{}
-
-//Pinch Gesture <-- also gives if it's a zoom in or out pinch
-class Pinch{}
+boolean isHoldGesture(){
+  
+  return false;
+}

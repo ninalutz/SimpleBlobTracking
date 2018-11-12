@@ -1,11 +1,10 @@
 //A simple blob class
-
-
 class Blob {
   float minx;
   float miny;
   float maxx;
   float maxy;
+  float x, y;
 
   ArrayList<PVector> points;
 
@@ -24,6 +23,8 @@ class Blob {
     strokeWeight(2);
     rectMode(CORNERS);
     rect(minx, miny, maxx, maxy);
+    fill(0);
+    ellipse(center().x, center().y, 5, 5);
   }
 
 
@@ -34,13 +35,16 @@ class Blob {
     maxx = max(maxx, x);
     maxy = max(maxy, y);
   }
+  
+  PVector center(){
+    return new PVector(minx + ((maxx-minx)/2), miny + ((maxy-miny)/2));
+  }
 
   float size() {
     return (maxx-minx)*(maxy-miny);
   }
 
   boolean isNear(float x, float y) {
-
     // Closest point in blob strategy
     float d = 10000000;
     for (PVector v : points) {
