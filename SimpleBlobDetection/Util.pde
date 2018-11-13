@@ -20,13 +20,13 @@ void mousePressed() {
 
 void keyPressed() {
   if (keyCode == UP) {
-    distThreshold+=5;
+    distThreshold+=2;
   } else if (keyCode == DOWN) {
-    distThreshold-=5;
+    distThreshold-=2;
   }
   if (keyCode == RIGHT) {
-    colorThreshold+=5;
+    colorThreshold+=2;
   } else if (keyCode == LEFT) {
-    colorThreshold-=5;
+    colorThreshold-=2;
   }
 }

@@ -1,4 +1,5 @@
-//A simple blob class
+//A simple blob class, you can add to it if you want
+
 class Blob {
   float minx;
   float miny;
@@ -17,6 +18,7 @@ class Blob {
     points.add(new PVector(x, y));
   }
 
+  //This draws the blobs in your frame
   void show() {
     stroke(255, 255, 255);
     noFill();
@@ -27,7 +29,7 @@ class Blob {
     ellipse(center().x, center().y, 5, 5);
   }
 
-
+  //Can add parameters
   void add(float x, float y) {
     points.add(new PVector(x, y));
     minx = min(minx, x);
@@ -36,14 +38,17 @@ class Blob {
     maxy = max(maxy, y);
   }
   
+  //Give center
   PVector center(){
     return new PVector(minx + ((maxx-minx)/2), miny + ((maxy-miny)/2));
   }
-
+  
+  //Get size
   float size() {
     return (maxx-minx)*(maxy-miny);
   }
 
+  //Sees if it's near for other blobs/to not get overlaps 
   boolean isNear(float x, float y) {
     // Closest point in blob strategy
     float d = 10000000;

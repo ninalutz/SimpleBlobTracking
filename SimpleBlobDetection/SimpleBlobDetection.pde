@@ -1,6 +1,9 @@
 /*
 This is a simple demo script intended to allow users to quickly write blob detection
-Based off coding train example
+
+You'll have to finese for the gesture logic but overall this will get you started
+
+You can port directly to serial with Processing's I/O and Serial libraries 
 */
 
 /*
@@ -8,14 +11,14 @@ Import Processing Video Library and start a capture
 */
 import processing.video.*;
 Capture video;
-
-//Parameters 
 color trackColor; 
-float colorThreshold = 25;
-float distThreshold = 10;
-
 ArrayList<Blob> blobs = new ArrayList<Blob>();
 
+//Parameters, if these are smaller more accurate but you may need error
+float colorThreshold = 25; //how close color needs to be
+float distThreshold = 10; //distance threshold for if to catalog new Blobs 
+
+//THIS RUNS ONCE
 void setup() {
   size(640, 360);
   //If you have multiple cameras or webcam and you need to ID
@@ -27,10 +30,7 @@ void setup() {
   startTime = millis();
 }
 
-void captureEvent(Capture video) {
-  video.read();
-}
-
+//THIS RUNS EACH LOOP 
 void draw() {
   //Draws video and parameters
   video.loadPixels();
@@ -44,6 +44,11 @@ void draw() {
       b.show();
   }
   
+}
+
+//Capture video feed
+void captureEvent(Capture video) {
+  video.read();
 }
 
 //This just draws the parameter info
