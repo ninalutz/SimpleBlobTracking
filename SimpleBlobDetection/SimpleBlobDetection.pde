@@ -26,7 +26,7 @@ void setup() {
   //printArray(cameras); 
   video = new Capture(this, 640, 360);
   video.start();
-  trackColor = color(255, 255, 255);
+  trackColor = color(0, 255, 200);
   startTime = millis();
 }
 
